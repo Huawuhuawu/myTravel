@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>myTravel - Plan Your Perfect Trip</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-content">
+        <div class="topbar-left">
+          <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="20" y1="12" y2="12"></line>
+              <line x1="4" x2="20" y1="6" y2="6"></line>
+              <line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+          </button>
+          <a href="/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path>
+            </svg>
+            <span>myTravel</span>
+          </a>
+        </div>
+
+        <div class="topbar-right">
+          <button class="icon-button" aria-label="Notifications">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+            </svg>
+          </button>
+
+          <div class="dropdown">
+            <button class="icon-button dropdown-toggle" aria-label="Language">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">English</a>
+              <a href="#" class="dropdown-item">Spanish</a>
+              <a href="#" class="dropdown-item">French</a>
+              <a href="#" class="dropdown-item">German</a>
+              <a href="#" class="dropdown-item">Japanese</a>
+            </div>
+          </div>
+
+          <div class="avatar">
+            <img src="https://placehold.co/40x40" alt="User">
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <!-- Sidebar Overlay -->
+      <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+          <div class="sidebar-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path>
+            </svg>
+            <span>Navigation</span>
+          </div>
+          <nav class="sidebar-nav">
+            <button class="nav-item" data-target="weather">Weather Check</button>
+            <button class="nav-item" data-target="attraction planner">attraction planner</button>
+            <button class="nav-item" data-target="attractions">Attraction Recommendations</button>
+            <button class="nav-item" data-target="itinerary">Itinerary Planning</button>
+            <button class="nav-item" data-target="notes">Travel Notes</button>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Weather Check Section -->
+        <section id="weather" class="section">
+          <h2 class="section-title">Weather Check</h2>
+          <div class="weather-cards">
+            <div class="card">
+              <h3 class="card-title">Temperature</h3>
+              <p class="weather-value" id="temperature">Loading...</p>
+            </div>
+            <div class="card">
+              <h3 class="card-title">Rainfall</h3>
+              <p class="weather-value" id="rainfall">Loading...</p>
+            </div>
+            <div class="card">
+              <h3 class="card-title">Wind Speed</h3>
+              <p class="weather-value" id="wind-speed">Loading...</p>
+            </div>
+          </div>
+
+          <h3 class="subsection-title">24-Hour Forecast</h3>
+          <div class="forecast-container">
+            <!-- Mobile View -->
+            <div class="mobile-forecast">
+              <div class="tabs">
+                <div class="tabs-header">
+                  <span class="tabs-label">24-hour forecast</span>
+                  <div class="tabs-list">
+                    <button class="tab-trigger active" data-tab="scroll">Scroll</button>
+                    <button class="tab-trigger" data-tab="grid">Grid</button>
+                  </div>
+                </div>
+
+                <div class="tab-content active" id="scroll-tab">
+                  <div class="hourly-scroll">
+                    <div class="hourly-forecast-scroll" id="hourly-forecast-scroll">
+                      <!-- Hourly forecast items will be inserted here by JavaScript -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-content" id="grid-tab">
+                  <div class="hourly-grid" id="hourly-forecast-grid">
+                    <!-- Hourly forecast grid items will be inserted here by JavaScript -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tablet View -->
+            <div class="tablet-forecast">
+              <div class="hourly-forecast-tablet" id="hourly-forecast-tablet">
+                <!-- Tablet view forecast will be inserted here by JavaScript -->
+              </div>
+            </div>
+
+            <!-- Desktop View -->
+            <div class="desktop-forecast">
+              <div class="hourly-forecast-desktop" id="hourly-forecast-desktop">
+                <!-- Desktop view forecast will be inserted here by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <h3 class="subsection-title">5-Day Forecast</h3>
+          <div class="daily-forecast" id="daily-forecast">
+            <!-- Daily forecast items will be inserted here by JavaScript -->
+          </div>
+        </section>
+
+        <!-- google map-->
+        <section id="attraction planner" class="section">
+          <h2 class="section-title">attraction planner</h2>
+          
+          <div class="planner-layout">
+              <!-- Display Area - Takes up about half the screen width on larger devices -->
+              <div class="display-section">
+                  <div class="card display-area">
+                      <h2>Display Area</h2>
+                      <div class="display-content">
+                        <iframe src="/map/推薦路徑+Ubike資訊強化版.html"></iframe>
+                        <!-- <h1>The map will be displayed here</h1> -->
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Control Panel -->
+              <div class="controls-section">
+                  <div class="card">
+                      <h2>Plan Settings</h2>
+                      
+                      <!-- Number of Attractions Dropdown -->
+                      <div class="form-group">
+                          <label for="num-attractions">Number of attractions to visit:</label>
+                          <select id="num-attractions">
+                              <option value="">Select number of attractions</option>
+                              <option value="1">1 attraction</option>
+                              <option value="2">2 attractions</option>
+                              <option value="3">3 attractions</option>
+                              <option value="4">4 attractions</option>
+                              <option value="5">5 attractions</option>
+                              <option value="6">6 attractions</option>
+                              <option value="7">7 attractions</option>
+                              <option value="8">8 attractions</option>
+                          </select>
+                      </div>
+                      
+                      <!-- Excluded Attractions Checkboxes -->  
+                      <div class="form-group">
+                          <label>Attractions to exclude:</label>
+                          <div class="checkbox-grid">
+                              <div class="checkbox-item">
+                                  <input type="checkbox" id="exclude-1" value="1">
+                                  <label for="exclude-1">Attraction 1</label>
+                              </div>
+                              <div class="checkbox-item">
+                                  <input type="checkbox" id="exclude-2" value="2">
+                                  <label for="exclude-2">Attraction 2</label>
+                              </div>
+                              <div class="checkbox-item">
+                                  <input type="checkbox" id="exclude-3" value="3">
+                                  <label for="exclude-3">Attraction 3</label>
+                              </div>
+                              <div class="checkbox-item">
+                                  <input type="checkbox" id="exclude-4" value="4">
+                                  <label for="exclude-4">Attraction 4</label>
+                              </div>
+                              <div class="checkbox-item">
+                                  <input type="checkbox" id="exclude-5" value="5">
+                                  <label for="exclude-5">Attraction 5</label>
+                              </div>
+                              <div class="checkbox-item">
+                                  <input type="checkbox" id="exclude-6" value="6">
+                                  <label for="exclude-6">Attraction 6</label>
+                              </div>
+                              <div class="checkbox-item">
+                                  <input type="checkbox" id="exclude-7" value="7">
+                                  <label for="exclude-7">Attraction 7</label>
+                              </div>
+                              <div class="checkbox-item">
+                                  <input type="checkbox" id="exclude-8" value="8">
+                                  <label for="exclude-8">Attraction 8</label>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <!-- Transportation Mode Radio Buttons -->
+                      <div class="form-group">
+                          <label>Mode of transportation:</label>
+                          <div class="radio-group">
+                              <div class="radio-item">
+                                  <input type="radio" id="walking" name="transport-mode" value="walking" checked>
+                                  <label for="walking">Walking</label>
+                              </div>
+                              <div class="radio-item">
+                                  <input type="radio" id="driving" name="transport-mode" value="driving">
+                                  <label for="driving">Driving</label>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <!-- Summary Section -->
+                      <div class="summary">
+                          <h3>Current Selection:</h3>
+                          <p id="summary-attractions">Number of attractions: Not selected</p>
+                          <p id="summary-excluded">Excluded attractions: None</p>
+                          <p id="summary-transport">Transportation mode: Walking</p>
+                      </div>
+
+                      <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                        <button id="confirm-button" style="background-color: #4256ae; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 500;">
+                            Confirm Selection
+                        </button>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </section>
+
+        <!-- Attraction Recommendations Section -->
+        <section id="attractions" class="section">
+          <h2 class="section-title">Attraction Recommendations</h2>
+          <div class="attractions-list" id="attractions-list">
+            <!-- Attractions will be inserted here by JavaScript -->
+          </div>
+        </section>
+
+        <!-- Itinerary Planning Section -->
+        <section id="itinerary" class="section">
+          <h2 class="section-title">Itinerary Planning</h2>
+          <div class="itinerary-tabs">
+            <div class="tabs-list">
+              <button class="tab-trigger active" data-tab="day1">Day 1</button>
+              <button class="tab-trigger" data-tab="day2">Day 2</button>
+              <button class="tab-trigger" data-tab="day3">Day 3</button>
+            </div>
+
+            <div class="tab-content active" id="day1-tab">
+              <div class="itinerary-items" id="day1-items">
+                <!-- Day 1 itinerary items will be inserted here by JavaScript -->
+              </div>
+            </div>
+
+            <div class="tab-content" id="day2-tab">
+              <div class="itinerary-items" id="day2-items">
+                <!-- Day 2 itinerary items will be inserted here by JavaScript -->
+              </div>
+            </div>
+
+            <div class="tab-content" id="day3-tab">
+              <div class="itinerary-items" id="day3-items">
+                <!-- Day 3 itinerary items will be inserted here by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Travel Notes Section -->
+        <section id="notes" class="section">
+          <h2 class="section-title">Travel Notes</h2>
+          <textarea class="notes-textarea" placeholder="Share your thoughts here"></textarea>
+          <div class="social-buttons">
+            <button class="social-button" aria-label="Share on Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </button>
+            <button class="social-button" aria-label="Share on Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </button>
+            <button class="social-button" aria-label="Share on Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+              </svg>
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+      <span class="tooltip">Back to top</span>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="/weather/WCAPI.js"></script>
+  <script src="/map/map.js"></script>
+</body>
+</html>
+
