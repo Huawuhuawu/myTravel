@@ -1,1 +1,2 @@
-直接開啟根目錄的index.html檔即可
+啟動檔為根目錄的index.html。
+請使用vscode的live server開啟，直接點擊打開index.html可能會導致iframe裡面的google map無法顯示
